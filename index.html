@@ -1,0 +1,820 @@
+<!doctype html><html lang="pt-PT"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="robots" content="noindex,nofollow">
+<title>Green Heart Smart Hostel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@400;600;700;900&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+--bg:#F4F4F7; --surface:#FFFFFF; --surface-2:#E9E8EE; --ink:#1A1A1A; --muted:#5E5E68; --line:#DAD9E0;
+--brand:#190FFF; --brand-ink:#FFFFFF; --brand-soft:#E6E5FF;
+--mint:#11FFBD; --mint-ink:#0B0B0D;
+--green:#00936A; --green-soft:#D6FBEF;
+--ok:#00936A; --warn:#B7791F; --warn-soft:#FBEFD9; --crit:#C23B3B; --crit-soft:#F9E2E2;
+--bar:#111114; --bar-ink:#FFFFFF; --bar-muted:#A6A6B0;
+--core:#141417; --core-ink:#FFFFFF;
+--phone:#111114; --phone-screen:#F7F7FA;
+--display:"Titillium Web", "Segoe UI", system-ui, sans-serif;
+--body:"IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+--mono:"IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+--radius:10px;
+}
+@media (prefers-color-scheme: dark){
+:root:not([data-theme="light"]){
+color-scheme:dark;
+--bg:#0D0D10; --surface:#17171B; --surface-2:#222228; --ink:#F2F2F5; --muted:#A3A3AE; --line:#2E2E36;
+--brand:#7A74FF; --brand-ink:#FFFFFF; --brand-soft:#1F1D4A;
+--mint:#11FFBD; --mint-ink:#0B0B0D;
+--green:#11FFBD; --green-soft:#0E3A2E;
+--ok:#11FFBD; --warn:#E3AE55; --warn-soft:#3A2E17; --crit:#EF7777; --crit-soft:#3E1D1D;
+--bar:#000000; --bar-ink:#FFFFFF; --bar-muted:#9A9AA5;
+--core:#000000; --core-ink:#FFFFFF;
+--phone:#000000; --phone-screen:#1C1C21;
+}
+}
+:root[data-theme="dark"]{
+color-scheme:dark;
+--bg:#0D0D10; --surface:#17171B; --surface-2:#222228; --ink:#F2F2F5; --muted:#A3A3AE; --line:#2E2E36;
+--brand:#7A74FF; --brand-ink:#FFFFFF; --brand-soft:#1F1D4A;
+--mint:#11FFBD; --mint-ink:#0B0B0D;
+--green:#11FFBD; --green-soft:#0E3A2E;
+--ok:#11FFBD; --warn:#E3AE55; --warn-soft:#3A2E17; --crit:#EF7777; --crit-soft:#3E1D1D;
+--bar:#000000; --bar-ink:#FFFFFF; --bar-muted:#9A9AA5;
+--core:#000000; --core-ink:#FFFFFF;
+--phone:#000000; --phone-screen:#1C1C21;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.55;margin:0}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0;line-height:1.12}
+h2{font-size:clamp(26px,3.4vw,38px);font-weight:700;letter-spacing:-.01em}
+h3{font-size:18px;font-weight:700}
+p{margin:0}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--brand)}
+.muted{color:var(--muted)}
+.mono{font-family:var(--mono)}
+.num{font-variant-numeric:tabular-nums}
+.topbar{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--bar);color:var(--bar-ink)}
+.topbar-in{max-width:1240px;margin:0 auto;padding:10px 20px;display:flex;align-items:center;gap:16px}
+.wordmark{font-family:var(--display);font-weight:800;font-size:20px;letter-spacing:.02em;display:flex;align-items:center;gap:8px;white-space:nowrap}
+.wordmark svg{height:24px;width:auto;display:block}
+.wordmark small{font-family:var(--body);font-weight:500;font-size:12px;color:var(--bar-muted);letter-spacing:0}
+.nav{display:flex;gap:2px;overflow-x:auto;flex:1;scrollbar-width:none}
+.nav::-webkit-scrollbar{display:none}
+.nav a{font-size:13px;color:var(--bar-muted);text-decoration:none;padding:6px 10px;border-radius:6px;white-space:nowrap}
+.nav a:hover{color:var(--bar-ink);background:rgba(255,255,255,.08)}
+.nav a.on{color:var(--mint-ink);background:var(--mint);font-weight:600}
+.present{font:inherit;font-size:13px;font-weight:600;border:1px solid var(--mint);background:var(--mint);color:var(--mint-ink);padding:6px 10px;border-radius:6px;cursor:pointer;white-space:nowrap}
+.present:focus-visible{outline:2px solid var(--mint);outline-offset:2px}
+.nav a:focus-visible,button:focus-visible,textarea:focus-visible{outline:2px solid var(--brand);outline-offset:2px}
+main{max-width:1240px;margin:0 auto;padding-inline:20px}
+section{padding-block:64px;border-bottom:1px solid var(--line);scroll-margin-top:60px}
+section:last-of-type{border-bottom:0}
+.sec-head{display:grid;gap:10px;max-width:760px;margin-bottom:32px}
+.sec-head p{color:var(--muted);font-size:16px;max-width:65ch}
+.tag{display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:11px;padding:3px 8px;border-radius:4px;background:var(--brand-soft);color:var(--brand);white-space:nowrap}
+.tag.g{background:var(--green-soft);color:var(--green)}
+.demo-note{font-family:var(--mono);font-size:11px;color:var(--warn);background:var(--warn-soft);padding:3px 8px;border-radius:4px}
+.hero{padding-block:56px 64px;display:grid;grid-template-columns:1.2fr 1fr;gap:48px;align-items:center}
+.hero h1{font-size:clamp(34px,5.2vw,62px);font-weight:900;letter-spacing:-.02em}
+.hero h1 em{font-style:normal;background:linear-gradient(transparent 58%,var(--mint) 58%,var(--mint) 92%,transparent 92%);color:var(--ink)}
+.hero .lead{font-size:18px;color:var(--muted);max-width:56ch;margin-top:18px}
+.hero-meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+.ba{display:grid;gap:10px}
+.ba-row{display:grid;grid-template-columns:1fr 24px 1fr;align-items:center;gap:8px;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:12px 14px;font-size:14px}
+.ba-row .from{color:var(--muted);text-decoration:line-through;text-decoration-color:color-mix(in srgb,var(--crit) 60%,transparent)}
+.ba-row .arr{color:var(--brand);text-align:center;font-weight:700}
+.ba-row .to{font-weight:600}
+.ba-h{display:grid;grid-template-columns:1fr 24px 1fr;gap:8px;padding:0 14px;font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+.pillars{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:8px}
+.pillar{border-top:3px solid var(--mint);background:var(--surface);padding:16px;border-radius:0 0 var(--radius) var(--radius)}
+.pillar .n{font-family:var(--mono);font-size:12px;color:var(--brand)}
+.pillar h3{margin:6px 0 6px;font-size:16px}
+.pillar p{font-size:13.5px;color:var(--muted)}
+.hub{display:grid;grid-template-columns:1fr auto 1.35fr auto 1fr;gap:14px;align-items:stretch}
+.col{display:grid;gap:10px;align-content:center}
+.col-title{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:2px}
+.node{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:10px 12px;font-size:14px;display:flex;justify-content:space-between;gap:8px;align-items:center}
+.node small{color:var(--muted);font-size:12px}
+.node.pms{border:2px solid var(--green);background:var(--green-soft)}
+.node.pms b{color:var(--green)}
+.link{display:flex;align-items:center;justify-content:center;color:var(--brand);font-family:var(--mono);font-size:12px;writing-mode:vertical-rl;letter-spacing:.1em;position:relative;min-width:26px}
+.link::before{content:"";position:absolute;inset:8px 50%;border-left:2px dashed color-mix(in srgb,var(--brand) 55%,transparent)}
+.link span{background:var(--bg);padding:6px 0;position:relative}
+.core{background:var(--core);color:var(--core-ink);border:1px solid var(--line);border-radius:14px;padding:18px;display:grid;gap:12px}
+.core h3{font-size:20px}
+.core .sub{font-size:13px;opacity:.85}
+.mods{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.mod{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.16);border-radius:8px;padding:9px 10px;font-size:13px;line-height:1.3;cursor:pointer;text-align:left;color:inherit;font-family:inherit}
+.mod b{display:block;font-size:13.5px}
+.mod[aria-pressed="true"]{background:var(--mint);color:var(--mint-ink);border-color:var(--mint)}
+.mod:hover{border-color:var(--mint)}
+.connector{font-size:12.5px;border:1px dashed rgba(17,255,189,.55);border-radius:8px;padding:8px 10px}
+.hub-detail{margin-top:18px;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:16px 18px;display:grid;grid-template-columns:200px 1fr;gap:18px}
+.hub-detail h3{font-size:17px}
+.hub-detail ul{margin:0;padding-left:18px;display:grid;gap:4px;font-size:14px}
+.base{margin-top:14px;display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.base div{background:var(--surface-2);border-radius:8px;padding:10px 12px;font-size:13px}
+.base b{display:block;font-size:13.5px}
+.principle{margin-top:18px;display:flex;gap:10px;align-items:flex-start;font-size:14px;color:var(--muted);max-width:80ch}
+.principle b{color:var(--ink)}
+.journey{display:grid;grid-template-columns:260px 300px 1fr;gap:28px;align-items:start}
+.steps{display:grid;gap:6px;counter-reset:s}
+.step{display:grid;grid-template-columns:28px 1fr;gap:10px;align-items:center;text-align:left;background:transparent;border:1px solid transparent;border-radius:8px;padding:9px 10px;cursor:pointer;color:var(--ink);font:inherit;font-size:14px}
+.step .k{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;font-family:var(--mono);font-size:12px;background:var(--surface-2);color:var(--muted)}
+.step small{display:block;color:var(--muted);font-size:12px}
+.step:hover{background:var(--surface)}
+.step[aria-selected="true"]{background:var(--surface);border-color:var(--line)}
+.step[aria-selected="true"] .k{background:var(--brand);color:var(--brand-ink)}
+.phone{width:100%;max-width:290px;aspect-ratio:9/18.5;background:var(--phone);border-radius:36px;padding:12px;margin:0 auto;box-shadow:0 20px 40px -20px rgba(0,0,0,.35)}
+.screen{background:var(--phone-screen);border-radius:26px;height:100%;overflow:hidden;display:flex;flex-direction:column;font-size:13px}
+.sbar{display:flex;justify-content:space-between;padding:10px 18px 4px;font-family:var(--mono);font-size:11px;color:var(--muted)}
+.sapp{padding:6px 14px 10px;border-bottom:1px solid var(--line);display:flex;gap:8px;align-items:center;font-weight:600}
+.sapp .av{width:26px;height:26px;border-radius:50%;background:var(--green);color:#fff;display:grid;place-items:center;font-size:11px;font-weight:700}
+.sbody{padding:12px 14px;display:grid;gap:9px;align-content:start;overflow:auto;flex:1}
+.bub{padding:8px 10px;border-radius:12px;max-width:88%;line-height:1.4}
+.bub.in{background:var(--surface);border:1px solid var(--line);justify-self:start;border-bottom-left-radius:4px}
+.bub.out{background:var(--brand);color:var(--brand-ink);justify-self:end;border-bottom-right-radius:4px}
+.card-s{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px}
+.field{display:flex;justify-content:space-between;gap:8px;font-size:12px;padding:3px 0;border-bottom:1px dashed var(--line)}
+.field:last-child{border-bottom:0}
+.field span:first-child{color:var(--muted)}
+.okline{color:var(--ok);font-weight:600;font-size:12.5px}
+.btn-s{background:var(--brand);color:var(--brand-ink);text-align:center;border-radius:8px;padding:9px;font-weight:600}
+.doc{height:92px;border-radius:8px;background:linear-gradient(135deg,var(--brand-soft),var(--green-soft));border:1px solid var(--line);position:relative;overflow:hidden}
+.doc::after{content:"";position:absolute;left:0;right:0;height:2px;background:var(--green);top:30%;box-shadow:0 0 10px var(--green);animation:scan 2.4s ease-in-out infinite}
+.doc .ph{position:absolute;left:10px;top:14px;width:44px;height:58px;border-radius:4px;background:color-mix(in srgb,var(--ink) 18%,transparent)}
+.doc .ln{position:absolute;left:64px;height:6px;border-radius:3px;background:color-mix(in srgb,var(--ink) 16%,transparent)}
+@keyframes scan{0%,100%{top:12%}50%{top:82%}}
+.face{width:120px;height:120px;border-radius:50%;margin:4px auto;border:3px solid var(--green);display:grid;place-items:center;background:var(--surface-2);font-family:var(--mono);color:var(--green);font-size:22px}
+.behind{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:20px;display:grid;gap:14px}
+.behind h3{font-size:22px}
+.behind ul{margin:0;padding:0;list-style:none;display:grid;gap:8px}
+.behind li{display:grid;grid-template-columns:18px 1fr;gap:8px;font-size:14px}
+.behind li::before{content:"";width:8px;height:8px;margin-top:7px;border-radius:2px;background:var(--mint);transform:rotate(45deg)}
+.metric{display:flex;gap:18px;flex-wrap:wrap;padding-top:12px;border-top:1px solid var(--line)}
+.metric div{font-size:12px;color:var(--muted)}
+.metric b{display:block;font-family:var(--display);font-size:24px;color:var(--ink)}
+@media (prefers-reduced-motion:reduce){.doc::after{animation:none}}
+.team{display:grid;grid-template-columns:1.4fr 1fr;gap:18px}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:18px;display:grid;gap:12px;align-content:start}
+.panel-h{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.tbl-wrap{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:13.5px}
+th{text-align:left;font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:500;padding:8px;border-bottom:1px solid var(--line);white-space:nowrap}
+td{padding:9px 8px;border-bottom:1px solid var(--line);vertical-align:top}
+tr:last-child td{border-bottom:0}
+.chip{display:inline-block;font-size:11.5px;padding:2px 8px;border-radius:999px;background:var(--surface-2);white-space:nowrap}
+.chip.b{background:var(--brand-soft);color:var(--brand)}
+.chip.g{background:var(--green-soft);color:var(--green)}
+.chip.w{background:var(--warn-soft);color:var(--warn)}
+.chip.c{background:var(--crit-soft);color:var(--crit)}
+.conf{font-family:var(--mono);font-size:12px;color:var(--muted)}
+.prompt{background:var(--surface-2);border-radius:8px;padding:10px 12px;font-size:13.5px}
+.answer{font-size:13.5px;display:grid;gap:6px}
+.answer ul{margin:0;padding-left:18px}
+.tree{font-family:var(--mono);font-size:12.5px;display:grid;gap:4px}
+.tree div{display:flex;justify-content:space-between;gap:8px}
+.tree .i1{padding-left:16px}.tree .i2{padding-left:32px}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:14px}
+.kpi{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:14px 16px}
+.kpi .l{font-size:12px;color:var(--muted)}
+.kpi .v{font-family:var(--display);font-size:30px;font-weight:700;font-variant-numeric:tabular-nums}
+.kpi .d{font-size:12px;font-family:var(--mono)}
+.up{color:var(--ok)}.down{color:var(--crit)}
+.dash{display:grid;grid-template-columns:1.6fr 1fr;gap:14px}
+.chart-box{position:relative;height:250px}
+.rooms{display:grid;grid-template-columns:repeat(6,1fr);gap:6px}
+.room{border-radius:6px;padding:6px;font-family:var(--mono);font-size:11px;text-align:center;border:1px solid var(--line)}
+.room.clean{background:var(--green-soft);color:var(--green)}
+.room.dirty{background:var(--crit-soft);color:var(--crit)}
+.room.prog{background:var(--warn-soft);color:var(--warn)}
+.room.insp{background:var(--brand-soft);color:var(--brand)}
+.legend{display:flex;flex-wrap:wrap;gap:10px;font-size:12px;color:var(--muted)}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:4px;vertical-align:-1px}
+.price-up{color:var(--ok);font-weight:600}
+.price-dn{color:var(--crit);font-weight:600}
+.accept{font:inherit;font-size:12px;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:6px;padding:3px 8px;cursor:pointer}
+.accept[disabled]{background:var(--green-soft);color:var(--green);border-color:transparent;cursor:default}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.cc{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:16px;display:grid;gap:8px;align-content:start}
+.cc ul{margin:0;padding-left:18px;font-size:13.5px;color:var(--muted);display:grid;gap:3px}
+.filters{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}
+.filters button{font:inherit;font-size:13px;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:5px 12px;cursor:pointer}
+.filters button[aria-pressed="true"]{background:var(--brand);color:var(--brand-ink);border-color:var(--brand)}
+.matrix td:first-child{font-weight:600;min-width:180px}
+.matrix td:nth-child(2){min-width:280px}
+.ok-mark{color:var(--ok);font-weight:700}
+.gantt{overflow-x:auto;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius)}
+.gt{display:grid;grid-template-columns:240px repeat(9,minmax(58px,1fr));min-width:820px;font-size:13px}
+.gt > div{padding:7px 8px;border-bottom:1px solid var(--line)}
+.gt .gh{font-family:var(--mono);font-size:11px;color:var(--muted);text-align:center;border-bottom:1px solid var(--line)}
+.gt .gh b{display:block;color:var(--ink);font-size:12px}
+.gt .team-row{grid-column:1/-1;font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;background:var(--surface-2);color:var(--muted)}
+.gt .lab{border-right:1px solid var(--line)}
+.bar{height:14px;border-radius:4px;align-self:center;margin:0 3px}
+.bar.dev{background:var(--brand)}
+.bar.ai{background:var(--mint)}
+.bar.bi{background:var(--warn)}
+.bar.ms{background:color-mix(in srgb,var(--brand) 55%,var(--green))}
+.bar.tr{background:var(--muted)}
+.gate{font-family:var(--mono);font-size:11px;color:var(--crit);text-align:center;align-self:center}
+.gates{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px}
+.gatec{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:16px;display:grid;gap:6px;align-content:start}
+.gatec .when{font-family:var(--mono);font-size:12px;color:var(--crit)}
+.gatec ul{margin:0;padding-left:18px;font-size:13.5px;color:var(--muted)}
+.fases{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:16px}
+.fase{padding:12px 14px;border-left:3px solid var(--mint);background:var(--surface)}
+.fase b{display:block;font-family:var(--display)}
+.fase span{font-size:13px;color:var(--muted)}
+.req-bar{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:14px}
+.progress{height:6px;border-radius:3px;background:var(--surface-2);flex:1;min-width:160px;max-width:320px;overflow:hidden}
+.progress i{display:block;height:100%;background:var(--green);width:0;transition:width .3s}
+.reqs{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.rg{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:16px;display:grid;gap:12px;align-content:start}
+.q{display:grid;gap:5px}
+.q label{font-size:14px;font-weight:500}
+.q label .why{display:block;font-weight:400;font-size:12px;color:var(--muted)}
+.q textarea{font:inherit;font-size:14px;border:1px solid var(--line);border-radius:6px;background:var(--bg);color:var(--ink);padding:7px 9px;resize:vertical;min-height:38px}
+.q.crit label::after{content:"crítico";margin-left:8px;font-family:var(--mono);font-size:10px;color:var(--crit);background:var(--crit-soft);padding:1px 6px;border-radius:3px;vertical-align:2px}
+.actions{display:flex;gap:8px;flex-wrap:wrap}
+.btn{font:inherit;font-size:14px;font-weight:600;border-radius:8px;padding:8px 14px;cursor:pointer;border:1px solid var(--brand);background:var(--brand);color:var(--brand-ink)}
+.btn.ghost{background:transparent;color:var(--brand)}
+.toast{font-size:13px;color:var(--ok);min-height:20px}
+.why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.why-c{padding:18px;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);display:grid;gap:8px;align-content:start}
+.why-c p{font-size:14px;color:var(--muted)}
+.roles{margin-top:18px}
+footer{max-width:1240px;margin:0 auto;padding:28px 20px 48px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;color:var(--muted);font-size:13px}
+body.pres .topbar{opacity:.2;transition:opacity .2s}
+body.pres .topbar:hover{opacity:1}
+.pres-hint{position:fixed;bottom:calc(14px + env(safe-area-inset-bottom,0px));right:16px;background:var(--ink);color:var(--bg);font-family:var(--mono);font-size:12px;padding:6px 10px;border-radius:6px;z-index:30}
+@media (max-width:1020px){
+.hero{grid-template-columns:1fr}
+.hub{grid-template-columns:1fr}
+.link{writing-mode:horizontal-tb;min-height:30px}
+.link::before{inset:50% 8px;border-left:0;border-top:2px dashed color-mix(in srgb,var(--brand) 55%,transparent)}
+.link span{padding:0 8px}
+.journey{grid-template-columns:1fr 1fr}
+.journey .behind{grid-column:1/-1}
+.team,.dash{grid-template-columns:1fr}
+.kpis,.pillars,.why-grid,.base{grid-template-columns:repeat(2,1fr)}
+.grid3,.gates,.fases{grid-template-columns:1fr 1fr}
+.wordmark small{display:none}
+}
+@media (max-width:640px){
+section{padding-block:44px}
+.journey,.reqs,.grid3,.gates,.fases,.pillars,.why-grid,.base{grid-template-columns:1fr}
+.hub-detail{grid-template-columns:1fr}
+.kpis{grid-template-columns:1fr 1fr}
+.kpi .v{font-size:24px}
+.mods{grid-template-columns:1fr}
+.rooms{grid-template-columns:repeat(4,1fr)}
+.present{display:none}
+.ba-row,.ba-h{grid-template-columns:1fr 18px 1fr;font-size:13px}
+}
+</style>
+</head><body>
+<header class="topbar">
+<div class="topbar-in">
+<div class="wordmark"><svg viewBox="0 0 163 60.422" role="img" aria-label="ITGEST"><g transform="translate(783.797 -326.745)" fill="currentColor"><path d="M-769.745,571.484a7.026,7.026,0,0,1-7.026,7.026,7.026,7.026,0,0,1-7.026-7.026,7.026,7.026,0,0,1,7.026-7.026,7.026,7.026,0,0,1,7.026,7.026" transform="translate(0 -191.342)" fill="#11FFBD"/><path d="M-776.771,326.746a7.026,7.026,0,0,0-7.026,7.026v30.914a7.026,7.026,0,0,0,7.026,7.026,7.026,7.026,0,0,0,7.026-7.026V333.772a7.026,7.026,0,0,0-7.026-7.026" transform="translate(0 -0.001)"/><path d="M-666.619,326.746h-30.914a7.026,7.026,0,0,0-7.026,7.026,7.026,7.026,0,0,0,7.026,7.026h8.431v23.888a7.026,7.026,0,0,0,7.026,7.026,7.026,7.026,0,0,0,7.026-7.026V340.8h8.431a7.026,7.026,0,0,0,7.026-7.026,7.026,7.026,0,0,0-7.026-7.026" transform="translate(-63.781 -0.001)"/><path d="M-188.378,371.711a11.957,11.957,0,0,1-11.944-11.944h2.81a9.144,9.144,0,0,0,9.134,9.134,9.144,9.144,0,0,0,9.133-9.134c0-4.691-3.175-7.775-9.438-9.167-7.506-1.668-11.639-5.9-11.639-11.911a11.957,11.957,0,0,1,11.944-11.944,11.958,11.958,0,0,1,11.944,11.944h-2.811a9.144,9.144,0,0,0-9.133-9.134,9.144,9.144,0,0,0-9.134,9.134c0,5.843,5.133,8.210,9.438,9.167a17.461,17.461,0,0,1,8.300,3.961,10.478,10.478,0,0,1,3.342,7.949,11.958,11.958,0,0,1-11.944,11.944" transform="translate(-469.656)"/><path d="M-447.7,371.711a11.957,11.957,0,0,1-11.944-11.944V338.689A11.957,11.957,0,0,1-447.7,326.745a11.957,11.957,0,0,1,11.944,11.944h-2.81a9.144,9.144,0,0,0-9.134-9.134,9.144,9.144,0,0,0-9.134,9.134v21.078A9.144,9.144,0,0,0-447.7,368.9a9.144,9.144,0,0,0,9.134-9.134v-9.134H-448.4v-2.81h12.647v11.944A11.957,11.957,0,0,1-447.7,371.711" transform="translate(-260.92)"/><path d="M-294.5,336.759v-2.81h-21.078V376.1H-294.5v-2.81h-18.267V356.432h15.457v-2.811h-15.457V336.759Z" transform="translate(-376.884 -5.799)"/><path d="M-70.661,333.949v2.81h10.539V376.1h2.811V336.76h10.539v-2.81Z" transform="translate(-574.024 -5.799)"/></g></svg><small>× Green Heart Hostel</small></div>
+<nav class="nav" id="nav" aria-label="Secções">
+<a href="#visao">Visão</a>
+<a href="#hub">Hub de integração</a>
+<a href="#hospede">Hóspede</a>
+<a href="#equipa">Equipa</a>
+<a href="#gestao">Gestão</a>
+<a href="#seguranca">Infraestrutura e RGPD</a>
+<a href="#caderno">Caderno de encargos</a>
+<a href="#roadmap">Roadmap</a>
+<a href="#requisitos">Levantamento</a>
+<a href="#itgest">Porquê ITGEST</a>
+</nav>
+<button class="present" id="presentBtn" type="button">Modo apresentação</button>
+</div>
+</header>
+<main>
+<section id="visao" class="hero">
+<div>
+<p class="eyebrow">Proposta de visão funcional · HGreenheart, Lda.</p>
+<h1 style="margin-top:12px">O Green Heart Hostel a funcionar <em>24 horas por dia</em>, sem mudar de sistema.</h1>
+<p class="lead">A ITGEST liga os canais de venda ao PMS que o hostel já usa e acrescenta, sobre essa ponte, check-in autónomo, atendimento com IA, automação de emails, preços dinâmicos e dashboards de gestão.</p>
+<div class="hero-meta">
+<span class="tag">4 eixos do caderno de encargos</span>
+<span class="tag g">PMS atual mantém-se</span>
+<span class="tag">Out 2026 → Jun 2027</span>
+</div>
+</div>
+<div class="ba" aria-label="Antes e depois">
+<div class="ba-h"><span>Hoje</span><span></span><span>Com a plataforma</span></div>
+<div class="ba-row"><span class="from">Reservas copiadas à mão entre extranets</span><span class="arr">→</span><span class="to">Sincronização automática com o PMS</span></div>
+<div class="ba-row"><span class="from">Check-in ao balcão, fotocópia do documento</span><span class="arr">→</span><span class="to">Check-in online com leitura do documento e selfie</span></div>
+<div class="ba-row"><span class="from">Boletins de alojamento preenchidos à mão</span><span class="arr">→</span><span class="to">Comunicação automática a partir da ficha</span></div>
+<div class="ba-row"><span class="from">Perguntas repetidas por WhatsApp e email</span><span class="arr">→</span><span class="to">Assistente multilingue 24/7 com contexto da reserva</span></div>
+<div class="ba-row"><span class="from">Preços revistos quando há tempo</span><span class="arr">→</span><span class="to">Sugestões diárias de preço com base na procura</span></div>
+<div class="ba-row"><span class="from">Relatórios em Excel no fim do mês</span><span class="arr">→</span><span class="to">Ocupação, ADR e RevPAR em tempo real</span></div>
+</div>
+</section>
+<section id="eixos" style="padding-top:0">
+<div class="pillars">
+<div class="pillar"><span class="n">Eixo 1</span><h3>Infraestrutura</h3><p>Servidor, licenciamento Microsoft, SQL Server, backup encriptado e web check-in com IA.</p></div>
+<div class="pillar"><span class="n">Eixo 2</span><h3>Produtividade</h3><p>Assistentes de IA, automação de emails, Power BI, integração de canais e RMS.</p></div>
+<div class="pillar"><span class="n">Eixo 3</span><h3>Processos internos</h3><p>Gestão documental em SharePoint e OneDrive com fluxos de IA e permissões.</p></div>
+<div class="pillar"><span class="n">Eixo 4</span><h3>Serviços</h3><p>Chatbots, integração de sistemas, formação da equipa e auditoria RGPD.</p></div>
+</div>
+</section>
+<section id="hub">
+<div class="sec-head">
+<p class="eyebrow">Arquitetura</p>
+<h2>A ITGEST é a ponte entre os canais e o PMS do hostel</h2>
+<p>O PMS continua a ser a fonte da verdade. O hub recebe reservas, mensagens e preços, aplica as regras do hostel e distribui a informação para cada sistema. Clique num módulo para ver o que faz.</p>
+</div>
+<div class="hub">
+<div class="col">
+<div class="col-title">Canais de venda e contacto</div>
+<div class="node">Booking.com <small>reservas</small></div>
+<div class="node">Airbnb <small>reservas</small></div>
+<div class="node">Google Travel <small>reservas</small></div>
+<div class="node">Website do hostel <small>reserva direta</small></div>
+<div class="node">WhatsApp e email <small>mensagens</small></div>
+</div>
+<div class="link" aria-hidden="true"><span>reservas · preços</span></div>
+<div class="core">
+<div>
+<h3>Hub <span style="color:var(--mint)">ITGEST</span></h3>
+<p class="sub">Integração, regras de negócio e IA numa só camada</p>
+</div>
+<div class="connector">Conector certificado aos canais (channel manager / API de conectividade) · a certificação direta com a Booking pode ser uma evolução</div>
+<div class="mods" id="mods">
+<button class="mod" type="button" data-m="sync" aria-pressed="true"><b>Motor de sincronização</b>reservas, disponibilidade, tarifas</button>
+<button class="mod" type="button" data-m="checkin" aria-pressed="false"><b>Web check-in com IA</b>OCR, biometria, fichas</button>
+<button class="mod" type="button" data-m="bot" aria-pressed="false"><b>Assistente de hóspedes</b>chatbot web e WhatsApp</button>
+<button class="mod" type="button" data-m="rpa" aria-pressed="false"><b>Automação de emails</b>leitura, triagem, rascunhos</button>
+<button class="mod" type="button" data-m="rms" aria-pressed="false"><b>Preços dinâmicos</b>ligação ao RMS</button>
+<button class="mod" type="button" data-m="data" aria-pressed="false"><b>Dados e ETL</b>SQL Server, KPIs</button>
+</div>
+</div>
+<div class="link" aria-hidden="true"><span>API · tempo real</span></div>
+<div class="col">
+<div class="col-title">Sistemas do hostel</div>
+<div class="node pms"><b>PMS atual</b><small>fonte da verdade</small></div>
+<div class="node">ERP e POS <small>faturação, bar</small></div>
+<div class="node">SIBA <small>boletins de alojamento</small></div>
+<div class="node">Microsoft 365 <small>SharePoint, Teams</small></div>
+<div class="node">Power BI <small>dashboards</small></div>
+</div>
+</div>
+<div class="hub-detail" id="hubDetail" aria-live="polite"></div>
+<div class="base">
+<div><b>Servidor e monitorização</b>capacidade local e híbrida</div>
+<div><b>SQL Server</b>repositório único de dados</div>
+<div><b>Backup encriptado</b>reservas, pagamentos, fichas</div>
+<div><b>RGPD e AI Act</b>por desenho, em todos os fluxos</div>
+</div>
+<p class="principle"><span class="tag g">Princípio</span><span><b>Nada muda para a equipa no PMS.</b> A plataforma trabalha à volta dele, alimenta-o e lê dele. Se amanhã o hostel trocar de PMS, troca-se o conector e o resto mantém-se.</span></p>
+</section>
+<section id="hospede">
+<div class="sec-head">
+<p class="eyebrow">Jornada do hóspede</p>
+<h2>Da reserva ao check-out, sem passar pelo balcão</h2>
+<p>O exemplo segue uma hóspede que reserva uma cama em dormitório na Booking. Avance pelos passos para ver o ecrã dela e o que acontece nos bastidores.</p>
+</div>
+<div class="journey">
+<div class="steps" role="tablist" id="steps" aria-label="Passos da jornada"></div>
+<div class="phone" aria-hidden="true"><div class="screen" id="screen"></div></div>
+<div class="behind" id="behind" aria-live="polite"></div>
+</div>
+</section>
+<section id="equipa">
+<div class="sec-head">
+<p class="eyebrow">Operação interna</p>
+<h2>Menos tempo na caixa de email, mais tempo com os hóspedes</h2>
+<p>A automação lê e classifica os emails, prepara as respostas e encaminha cada pedido. A equipa confirma antes de enviar. Os documentos ficam organizados no SharePoint com as permissões certas.</p>
+</div>
+<div class="team">
+<div class="panel">
+<div class="panel-h"><h3>Caixa de entrada inteligente</h3><span class="demo-note">dados de exemplo</span></div>
+<div class="tbl-wrap">
+<table>
+<thead><tr><th>Email</th><th>Classificação</th><th>Ação automática</th><th>Confiança</th></tr></thead>
+<tbody>
+<tr><td>Grupo de 14 estudantes, 3 noites em março<br><small class="muted">escola, Madrid</small></td><td><span class="chip b">Reserva de grupo</span></td><td>Orçamento em rascunho com a disponibilidade do PMS</td><td class="conf num">96%</td></tr>
+<tr><td>Preciso da fatura com NIF da empresa<br><small class="muted">hóspede, check-out ontem</small></td><td><span class="chip g">Pedido de fatura</span></td><td>Pedido criado no ERP e resposta preparada</td><td class="conf num">98%</td></tr>
+<tr><td>Esqueci o carregador no quarto 12<br><small class="muted">hóspede, Alemanha</small></td><td><span class="chip">Perdidos e achados</span></td><td>Tarefa para o housekeeping, resposta em alemão</td><td class="conf num">93%</td></tr>
+<tr><td>O ar condicionado não funcionou<br><small class="muted">review privada</small></td><td><span class="chip c">Reclamação</span></td><td>Escalado à gerência com o histórico da estadia</td><td class="conf num">91%</td></tr>
+<tr><td>Fatura de lavandaria de setembro<br><small class="muted">fornecedor</small></td><td><span class="chip w">Fornecedor</span></td><td>Arquivada no SharePoint em Financeiro / 2026</td><td class="conf num">99%</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="panel">
+<div class="panel-h"><h3>Assistente de IA da equipa</h3><span class="tag">Microsoft 365</span></div>
+<div class="prompt">“Resume as reviews desta semana e diz-me o que devemos corrigir.”</div>
+<div class="answer">
+<p><b>42 reviews · nota média 9,1</b></p>
+<ul>
+<li>Pontos fortes: equipa (18 menções), localização (15), limpeza (11).</li>
+<li>A corrigir: água quente no 2.º piso de manhã (5 menções).</li>
+<li>Sugestão: responder às 3 reviews abaixo de 7 até sexta.</li>
+</ul>
+</div>
+<div class="panel-h" style="margin-top:6px"><h3>Documentos no SharePoint</h3></div>
+<div class="tree">
+<div><span>▾ Green Heart Hostel</span></div>
+<div class="i1"><span>▸ Operação / Housekeeping</span><span class="chip">Equipa</span></div>
+<div class="i1"><span>▸ Hóspedes / Fichas</span><span class="chip c">Restrito</span></div>
+<div class="i1"><span>▸ Financeiro / 2026</span><span class="chip w">Gerência</span></div>
+<div class="i1"><span>▸ Fornecedores / Contratos</span><span class="chip w">Gerência</span></div>
+<div class="i1"><span>▸ Formação e manuais</span><span class="chip g">Todos</span></div>
+</div>
+</div>
+</div>
+</section>
+<section id="gestao">
+<div class="sec-head">
+<p class="eyebrow">Business Intelligence e RMS</p>
+<h2>A gerência vê o hostel inteiro num só ecrã</h2>
+<p>Os dados do PMS, dos canais e do POS chegam ao Power BI através do repositório SQL Server. O RMS sugere o preço de cada noite e o hub publica-o nos canais depois de aprovado. <span class="demo-note">dados ilustrativos · hostel de ~80 camas</span></p>
+</div>
+<div class="kpis">
+<div class="kpi"><div class="l">Ocupação (camas) · setembro</div><div class="v num">86,4%</div><div class="d up">+4,1 p.p. vs 2025</div></div>
+<div class="kpi"><div class="l">ADR por cama</div><div class="v num">32,80 €</div><div class="d up">+2,40 € vs 2025</div></div>
+<div class="kpi"><div class="l">RevPAB</div><div class="v num">28,34 €</div><div class="d up">+13,4% vs 2025</div></div>
+<div class="kpi"><div class="l">Pedidos resolvidos pelo assistente</div><div class="v num">71%</div><div class="d muted">meta Gate 3: &gt;70%</div></div>
+</div>
+<div class="dash">
+<div class="panel">
+<div class="panel-h"><h3>Ocupação diária · setembro</h3><span class="legend"><span><i style="background:var(--brand)"></i>2026</span><span><i style="background:var(--muted)"></i>2025</span></span></div>
+<div class="chart-box"><canvas id="occChart" aria-label="Gráfico de ocupação diária"></canvas></div>
+</div>
+<div class="panel">
+<div class="panel-h"><h3>Receita por canal</h3><span class="muted" style="font-size:12px">setembro</span></div>
+<div class="chart-box"><canvas id="chanChart" aria-label="Gráfico de receita por canal"></canvas></div>
+</div>
+<div class="panel">
+<div class="panel-h"><h3>Sugestões de preço · próximos dias</h3><span class="tag">RMS</span></div>
+<div class="tbl-wrap">
+<table>
+<thead><tr><th>Noite</th><th>Ocup. prevista</th><th>Atual</th><th>Sugerido</th><th>Motivo</th><th></th></tr></thead>
+<tbody class="num">
+<tr><td>Sex 2 out</td><td>94%</td><td>34 €</td><td class="price-up">39 €</td><td>Procura alta, 3 hostels vizinhos esgotados</td><td><button class="accept" type="button">Aprovar</button></td></tr>
+<tr><td>Sáb 3 out</td><td>97%</td><td>36 €</td><td class="price-up">42 €</td><td>Concerto no centro, reservas a subir</td><td><button class="accept" type="button">Aprovar</button></td></tr>
+<tr><td>Dom 4 out</td><td>71%</td><td>32 €</td><td>32 €</td><td>Manter</td><td><button class="accept" type="button">Aprovar</button></td></tr>
+<tr><td>Ter 6 out</td><td>58%</td><td>30 €</td><td class="price-dn">27 €</td><td>Procura baixa, estimular reservas de última hora</td><td><button class="accept" type="button">Aprovar</button></td></tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="panel">
+<div class="panel-h"><h3>Housekeeping · hoje</h3><span class="muted num" style="font-size:12px" id="hkCount"></span></div>
+<div class="rooms" id="rooms"></div>
+<div class="legend"><span><i style="background:var(--green)"></i>Pronto</span><span><i style="background:var(--crit)"></i>Por limpar</span><span><i style="background:var(--warn)"></i>Em curso</span><span><i style="background:var(--brand)"></i>Inspecionar</span></div>
+</div>
+</div>
+</section>
+<section id="seguranca">
+<div class="sec-head">
+<p class="eyebrow">Eixo 1 · Infraestrutura, segurança e conformidade</p>
+<h2>Uma base estável e protegida para dados de hóspedes</h2>
+<p>Fichas de alojamento, documentos de identificação e dados biométricos exigem cuidado redobrado. A conformidade entra no desenho de cada fluxo desde o início.</p>
+</div>
+<div class="grid3">
+<div class="cc"><h3>Servidor e hardware</h3><ul><li>Reforço de processamento e armazenamento local e híbrido</li><li>Monitorização de desempenho e alertas</li><li>Dimensionado para as automações e o ETL</li></ul></div>
+<div class="cc"><h3>Licenciamento e acessos Microsoft</h3><ul><li>Licenciamento de servidor e controlo de acessos</li><li>Contas individuais e autenticação multifator</li><li>Terminais centralizados para a equipa</li></ul></div>
+<div class="cc"><h3>SQL Server e fluxos de dados</h3><ul><li>Repositório único entre PMS, ERP, POS e IA</li><li>ETL agendado e rastreável</li><li>Base para o Power BI e para o RMS</li></ul></div>
+<div class="cc"><h3>Backup encriptado</h3><ul><li>Reservas, pagamentos e fichas de hóspedes</li><li>Cópias locais e fora do local, encriptadas</li><li>Testes de reposição periódicos</li></ul></div>
+<div class="cc"><h3>RGPD</h3><ul><li>Avaliação de impacto para biometria e documentos</li><li>Consentimento explícito na verificação facial</li><li>Retenção mínima e eliminação automática das imagens</li><li>Auditoria inicial (M3) e final (M9)</li></ul></div>
+<div class="cc"><h3>AI Act</h3><ul><li>Hóspede informado de que fala com um assistente de IA</li><li>Passagem para uma pessoa sempre disponível</li><li>Supervisão humana nas decisões de preço e nas respostas sensíveis</li><li>Documentação dos sistemas de IA</li></ul></div>
+</div>
+</section>
+<section id="caderno">
+<div class="sec-head">
+<p class="eyebrow">Correspondência com o caderno de encargos</p>
+<h2>Cada requisito tem uma resposta e um momento de entrega</h2>
+<p>Filtre por eixo para ver como cada ponto do caderno de encargos é coberto.</p>
+</div>
+<div class="filters" id="filters">
+<button type="button" data-f="all" aria-pressed="true">Todos</button>
+<button type="button" data-f="1" aria-pressed="false">Eixo 1</button>
+<button type="button" data-f="2" aria-pressed="false">Eixo 2</button>
+<button type="button" data-f="3" aria-pressed="false">Eixo 3</button>
+<button type="button" data-f="4" aria-pressed="false">Eixo 4</button>
+</div>
+<div class="tbl-wrap panel" style="padding:6px 10px">
+<table class="matrix">
+<thead><tr><th>Requisito</th><th>Resposta ITGEST</th><th>Eixo</th><th>Quando</th><th>Cobertura</th></tr></thead>
+<tbody id="matrix"></tbody>
+</table>
+</div>
+</section>
+<section id="roadmap">
+<div class="sec-head">
+<p class="eyebrow">Metodologia e cronograma</p>
+<h2>9 meses, 3 fases, 3 momentos de validação</h2>
+<p>De 1 de outubro de 2026 a 30 de junho de 2027. Cada fase termina com uma validação conjunta, com critérios de aprovação definidos à partida.</p>
+</div>
+<div class="fases">
+<div class="fase"><b>Fase 1 · M1–M3</b><span>Web check-in com OCR e biometria, ETL de dados, arquitetura de chatbots e RPA</span></div>
+<div class="fase"><b>Fase 2 · M3–M6</b><span>Integração PMS e canais, chatbots, automação de emails, Power BI, SharePoint</span></div>
+<div class="fase"><b>Fase 3 · M6–M9</b><span>RMS e preços dinâmicos, dashboards finais, assistentes de IA, otimização</span></div>
+</div>
+<div class="gantt"><div class="gt" id="gantt"></div></div>
+<div class="gates">
+<div class="gatec"><span class="when">Gate 1 · final de dezembro 2026</span><h3>OCR e ETL</h3><ul><li>Check-in automatizado em produção, precisão &gt;95%</li><li>ETL de dados operacional</li><li>Auditoria RGPD inicial concluída</li></ul></div>
+<div class="gatec"><span class="when">Gate 2 · final de março 2027</span><h3>Integração, chatbots, BI e SharePoint</h3><ul><li>PMS integrado com os canais definidos</li><li>Chatbots com &gt;50% de resolução</li><li>SharePoint estruturado com fluxos de IA</li><li>Formação módulo 1 concluída</li></ul></div>
+<div class="gatec"><span class="when">Gate 3 · final de junho 2027</span><h3>BI, RMS e consolidação</h3><ul><li>Dashboards operacionais e RMS em produção</li><li>&gt;70% das interações resolvidas pelos chatbots</li><li>Classificação documental automatizada</li><li>Formação módulo 2 e auditoria final concluídas</li></ul></div>
+</div>
+</section>
+<section id="requisitos">
+<div class="sec-head">
+<p class="eyebrow">Levantamento de requisitos</p>
+<h2>O que precisamos de saber para fechar a solução</h2>
+<p>Perguntas para validar em conjunto nesta reunião. As notas ficam guardadas neste navegador e podem ser copiadas no fim.</p>
+</div>
+<div class="req-bar">
+<div style="display:flex;align-items:center;gap:10px;flex:1"><div class="progress"><i id="prog"></i></div><span class="muted num" id="progTxt" style="font-size:13px"></span></div>
+<div class="actions"><button class="btn" type="button" id="copyBtn">Copiar notas</button><button class="btn ghost" type="button" id="clearBtn">Limpar</button></div>
+</div>
+<p class="toast" id="toast" aria-live="polite"></p>
+<div class="reqs" id="reqs"></div>
+<textarea id="copyFallback" aria-label="Notas para copiar" hidden style="width:100%;min-height:200px;margin-top:12px;font-family:var(--mono);font-size:12px"></textarea>
+</section>
+<section id="itgest">
+<div class="sec-head">
+<p class="eyebrow">Porquê a ITGEST</p>
+<h2>Um parceiro para os quatro eixos</h2>
+<p>O caderno de encargos admite vários fornecedores. Propomos um só interlocutor com equipas especializadas, para que as integrações não fiquem entre fornecedores.</p>
+</div>
+<div class="why-grid">
+<div class="why-c"><span class="tag">Integração</span><h3>Somos a ponte</h3><p>O hostel mantém o PMS e as rotinas. Nós ligamos canais, PMS, ERP, POS e Microsoft 365 numa camada que controlamos de ponta a ponta.</p></div>
+<div class="why-c"><span class="tag">Experiência</span><h3>Sistemas críticos</h3><p>Plataformas de gestão e integração em saúde, administração pública e serviços, em Portugal e em África.</p></div>
+<div class="why-c"><span class="tag">Método</span><h3>Validação por fases</h3><p>Três gates com critérios mensuráveis. O cliente aprova cada fase antes de avançarmos.</p></div>
+<div class="why-c"><span class="tag">Adoção</span><h3>Equipa autónoma</h3><p>Formação em dois módulos e acompanhamento prático, para que as ferramentas sejam usadas no dia a dia.</p></div>
+</div>
+<div class="roles panel">
+<div class="panel-h"><h3>Governação do projeto</h3></div>
+<div class="tbl-wrap">
+<table>
+<thead><tr><th>Papel</th><th>Responsabilidade</th><th>Equipa</th></tr></thead>
+<tbody>
+<tr><td>Project Manager</td><td>Coordenação transversal, cronograma, riscos</td><td>Partilhada</td></tr>
+<tr><td>Tech Lead AI</td><td>Arquitetura de IA, chatbots, RPA, OCR, conformidade AI Act</td><td>Equipa de AI</td></tr>
+<tr><td>Tech Lead BI</td><td>Arquitetura de dados, Power BI, RMS, KPIs</td><td>Equipa de BI</td></tr>
+<tr><td>Dev Lead</td><td>Infraestrutura, integrações, PMS, APIs</td><td>Equipa de Desenvolvimento</td></tr>
+<tr><td>Microsoft Lead</td><td>SharePoint, OneDrive, Power Automate, fluxos de IA documentais</td><td>Equipa Microsoft</td></tr>
+<tr><td>RGPD Officer</td><td>Auditoria de conformidade, documentação, privacidade</td><td>Partilhada</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+</main>
+<footer>
+<span><b>ITGest</b> · Build · Connect · Create</span>
+<span>Visão funcional preparada para a HGreenheart, Lda. · setembro 2026 · ecrãs e números ilustrativos</span>
+</footer>
+<div class="pres-hint" id="presHint" hidden>← → navegar · Esc sair</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script>
+(function(){
+const $ = s => document.querySelector(s);
+const $$ = s => Array.from(document.querySelectorAll(s));
+const MODS = {
+sync:{t:"Motor de sincronização",e:"Eixo 2",l:["Recebe reservas, alterações e cancelamentos dos canais através do conector certificado","Cria e atualiza a reserva no PMS em segundos, sem intervenção manual","Publica disponibilidade e tarifas do PMS e do RMS em todos os canais","Regista cada movimento para auditoria e resolução de conflitos"]},
+checkin:{t:"Web check-in com IA",e:"Eixo 1",l:["Envia o link seguro de pré-chegada assim que a reserva entra","Lê o cartão de cidadão ou passaporte por OCR e valida os dados","Confirma a identidade com verificação facial, com consentimento explícito","Preenche a ficha no PMS e comunica o boletim de alojamento ao SIBA"]},
+bot:{t:"Assistente de hóspedes",e:"Eixo 4",l:["Responde no website e no WhatsApp, 24/7, na língua do hóspede","Conhece a reserva: datas, cama, pagamentos pendentes, check-in","Trata pedidos simples (horários, late check-out, bagagem) e passa a uma pessoa quando é preciso","Aprende com as conversas resolvidas pela equipa"]},
+rpa:{t:"Automação de emails",e:"Eixo 2",l:["Lê e classifica os emails recebidos (grupos, faturas, reclamações, fornecedores)","Prepara rascunhos de resposta com dados do PMS e do ERP","Encaminha cada pedido para a pessoa certa ou arquiva no SharePoint","Opera 24/7, a equipa aprova antes de enviar"]},
+rms:{t:"Preços dinâmicos",e:"Eixo 2",l:["Liga o hub a um Revenue Management System","Cruza ocupação prevista, ritmo de reservas e eventos na cidade","Propõe o preço de cada noite e tipo de cama","Depois de aprovado, o hub publica o preço nos canais e no PMS"]},
+data:{t:"Dados e ETL",e:"Eixo 1 · Eixo 2",l:["Extrai dados do PMS, canais, ERP e POS para o SQL Server","Normaliza e calcula KPIs: ocupação, ADR, RevPAB, receita por canal","Alimenta o Power BI e o RMS","Guarda histórico para comparar com anos anteriores"]}
+};
+function showMod(k){
+const m = MODS[k];
+$("#hubDetail").innerHTML = `<div><span class="tag">${m.e}</span><h3 style="margin-top:8px">${m.t}</h3></div><ul>${m.l.map(x=>`<li>${x}</li>`).join("")}</ul>`;
+$$("#mods .mod").forEach(b=>b.setAttribute("aria-pressed", b.dataset.m===k ? "true":"false"));
+}
+$$("#mods .mod").forEach(b=>b.addEventListener("click",()=>showMod(b.dataset.m)));
+showMod("sync");
+const S = [
+{t:"Reserva",s:"Booking.com",app:"Green Heart · Reservas",
+screen:`<div class="card-s"><div class="field"><span>Canal</span><b>Booking.com</b></div><div class="field"><span>Reserva</span><span class="mono">BK-4829173</span></div><div class="field"><span>Hóspede</span><span>Sofia M.</span></div><div class="field"><span>Quarto</span><span>Dorm misto 6 camas</span></div><div class="field"><span>Datas</span><span>12–15 out · 3 noites</span></div><div class="field"><span>Total</span><span class="num">98,40 €</span></div></div><p class="okline">✓ Criada no PMS em 4 s</p><p class="okline">✓ Disponibilidade atualizada nos outros canais</p>`,
+h:"A reserva chega sozinha ao PMS",l:["O conector recebe a reserva da Booking e entrega-a ao hub","O hub cria a reserva no PMS atual e reserva a cama","A disponibilidade baixa em todos os outros canais, evitando overbooking","Fica registo de cada passo para auditoria"],m:[["0","reservas copiadas à mão"],["&lt;10 s","até estar no PMS"]],e:"Eixo 2"},
+{t:"Pré-chegada",s:"link seguro",app:"WhatsApp · Green Heart",
+screen:`<div class="bub in">Olá Sofia! 👋 Faltam 3 dias para a tua estadia no Green Heart Hostel.</div><div class="bub in">Faz já o check-in online e chega direto à cama, sem filas: <u>ghh.pt/c/4829</u></div><div class="bub out">Obrigada! Posso deixar a mala antes das 14h?</div><div class="bub in">Claro, o depósito de bagagem é gratuito a partir das 8h.</div>`,
+h:"Contacto automático antes da chegada",l:["3 dias antes, o hub envia o link único de check-in por WhatsApp ou email","A mensagem vai na língua do hóspede","O assistente responde logo às primeiras dúvidas","Se o hóspede não fizer check-in, é enviado um lembrete 24 h antes"],m:[["24/7","atendimento"],["PT · EN · ES · FR · DE","línguas"]],e:"Eixo 1 · Eixo 4"},
+{t:"Documento",s:"leitura por OCR",app:"Check-in online",
+screen:`<p style="font-weight:600">Fotografa o teu documento</p><div class="doc"><div class="ph"></div><div class="ln" style="top:18px;width:110px"></div><div class="ln" style="top:32px;width:80px"></div><div class="ln" style="top:46px;width:120px"></div><div class="ln" style="top:60px;width:70px"></div></div><div class="card-s"><div class="field"><span>Nome</span><span>Sofia Martins</span></div><div class="field"><span>Nacionalidade</span><span>Brasileira</span></div><div class="field"><span>Documento</span><span class="mono">Passaporte ••••3187</span></div><div class="field"><span>Validade</span><span>08/2031 ✓</span></div></div><p class="okline">✓ Dados lidos · confiança 98,7%</p>`,
+h:"OCR com IA lê e valida o documento",l:["O hóspede fotografa o cartão de cidadão ou o passaporte","A IA extrai nome, nacionalidade, número e validade","Valida a zona MRZ, a validade e a coerência dos dados","Os dados preenchem a ficha de alojamento, sem digitação"],m:[["&gt;95%","precisão (Gate 1)"],["&lt;30 s","por documento"]],e:"Eixo 1"},
+{t:"Selfie",s:"verificação facial",app:"Check-in online",
+screen:`<p style="font-weight:600">Confirma que és tu</p><div class="face">✓</div><div class="card-s"><div class="field"><span>Correspondência facial</span><b class="num">99,1%</b></div><div class="field"><span>Prova de vida</span><span>✓ Aprovada</span></div></div><p class="muted" style="font-size:11.5px">☑ Autorizo a verificação biométrica para confirmar a minha identidade. As imagens são apagadas após a validação.</p><div class="btn-s">Concluir check-in</div>`,
+h:"A identidade é confirmada à distância",l:["Selfie com prova de vida, comparada com a fotografia do documento","Consentimento explícito antes da recolha","Imagens eliminadas após a validação, fica só o resultado","Se a correspondência falhar, a receção valida à chegada"],m:[["1:1","verificação, não identificação"],["0","imagens guardadas"]],e:"Eixo 1 · RGPD"},
+{t:"Registo",s:"PMS e SIBA",app:"Check-in concluído",
+screen:`<p class="okline" style="font-size:15px">✓ Check-in feito!</p><div class="card-s"><div class="field"><span>Cama</span><b>Dorm 3 · cama 4B</b></div><div class="field"><span>Código da porta</span><b class="mono">4 8 2 9 #</b></div><div class="field"><span>Cacifo</span><span>n.º 22</span></div><div class="field"><span>Wi-Fi</span><span class="mono">GreenHeart_Guest</span></div></div><div class="card-s" style="font-size:12px"><div class="field"><span>Ficha no PMS</span><span class="okline">✓</span></div><div class="field"><span>Boletim SIBA</span><span class="okline">✓ enviado</span></div><div class="field"><span>Pagamento</span><span class="okline">✓ pago</span></div></div>`,
+h:"A ficha e o boletim ficam feitos sem ninguém tocar",l:["O hub escreve a ficha de alojamento no PMS","Comunica o boletim de alojamento ao SIBA para hóspedes estrangeiros","Envia o código de acesso e as instruções de chegada","Chegadas fora de horas deixam de precisar de receção"],m:[["0 min","de registo manual"],["100%","boletins no prazo"]],e:"Eixo 1"},
+{t:"Estadia",s:"assistente 24/7",app:"WhatsApp · Green Heart",
+screen:`<div class="bub out">Is there a free walking tour tomorrow?</div><div class="bub in">Yes! Tomorrow at 10:00 from the lobby, about 3 hours. Want me to add you to the list?</div><div class="bub out">Yes please. Also can I check out at 12?</div><div class="bub in">Late check-out until 12:00 is free for your bed ✓ I've updated your booking.</div>`,
+h:"O assistente conhece a reserva e resolve",l:["Responde em várias línguas no website e no WhatsApp","Consulta e altera a reserva no PMS dentro das regras do hostel","Informa que é um assistente de IA e passa a uma pessoa quando é preciso","A equipa vê todas as conversas e pode intervir"],m:[["&gt;50%","resolução no Gate 2"],["&gt;70%","resolução no Gate 3"]],e:"Eixo 4"},
+{t:"Check-out",s:"fatura e review",app:"WhatsApp · Green Heart",
+screen:`<div class="bub in">Obrigado pela estadia, Sofia! A tua fatura está aqui: <u>fatura-4829.pdf</u></div><div class="bub in">Tens 1 minuto para nos deixar uma review? ⭐</div><div class="bub out">Adorei! Já deixei 😊</div><div class="card-s" style="font-size:12px"><div class="field"><span>Cama 4B</span><span>→ housekeeping</span></div><div class="field"><span>Review</span><span>9,6 · Booking</span></div></div>`,
+h:"Fecho automático e aprendizagem",l:["Fatura emitida pelo ERP e enviada ao hóspede","A cama passa para o quadro de housekeeping","Pedido de review no momento certo","As reviews alimentam o assistente de IA e os dashboards"],m:[["+","reviews recolhidas"],["tempo real","housekeeping"]],e:"Eixo 2 · Eixo 3"}
+];
+const stepsEl = $("#steps");
+S.forEach((s,i)=>{
+const b=document.createElement("button");
+b.type="button"; b.className="step"; b.setAttribute("role","tab"); b.id="step"+i;
+b.innerHTML=`<span class="k">${i+1}</span><span>${s.t}<small>${s.s}</small></span>`;
+b.addEventListener("click",()=>showStep(i));
+stepsEl.appendChild(b);
+});
+let cur=0;
+function showStep(i){
+cur=i; const s=S[i];
+$$(".step").forEach((b,j)=>b.setAttribute("aria-selected", j===i?"true":"false"));
+$("#screen").innerHTML=`<div class="sbar"><span>09:41</span><span>●●● 5G</span></div><div class="sapp"><span class="av">GH</span>${s.app}</div><div class="sbody">${s.screen}</div>`;
+$("#behind").innerHTML=`<div style="display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap"><span class="eyebrow">Nos bastidores · passo ${i+1} de ${S.length}</span><span class="tag">${s.e}</span></div><h3>${s.h}</h3><ul>${s.l.map(x=>`<li><span>${x}</span></li>`).join("")}</ul><div class="metric">${s.m.map(m=>`<div><b>${m[0]}</b>${m[1]}</div>`).join("")}</div><div class="actions"><button class="btn ghost" type="button" id="prevStep" ${i===0?"disabled":""}>Anterior</button><button class="btn" type="button" id="nextStep" ${i===S.length-1?"disabled":""}>Passo seguinte</button></div>`;
+$("#prevStep").onclick=()=>showStep(Math.max(0,cur-1));
+$("#nextStep").onclick=()=>showStep(Math.min(S.length-1,cur+1));
+}
+showStep(0);
+const st=["clean","clean","dirty","prog","clean","insp","clean","dirty","clean","clean","prog","clean","dirty","clean","insp","clean","clean","dirty","clean","prog","clean","clean","clean","insp"];
+const names=["D1","D2","D3","D4","D5","D6","D7","D8","D9","D10","D11","D12","P1","P2","P3","P4","P5","P6","F1","F2","F3","F4","F5","F6"];
+$("#rooms").innerHTML=names.map((n,i)=>`<div class="room ${st[i]}">${n}</div>`).join("");
+const ready=st.filter(x=>x==="clean").length;
+$("#hkCount").textContent=`${ready} de ${st.length} prontos`;
+$$(".accept").forEach(b=>b.addEventListener("click",()=>{b.disabled=true;b.textContent="Publicado"}));
+function css(v){return getComputedStyle(document.documentElement).getPropertyValue(v).trim()}
+function charts(){
+if(!window.Chart) return;
+const ink=css("--muted"), line=css("--line"), brand=css("--brand"), green=css("--green"), warn=css("--warn");
+Chart.defaults.font.family='"IBM Plex Sans", system-ui, sans-serif';
+Chart.defaults.color=ink;
+const days=Array.from({length:30},(_,i)=>i+1);
+const o26=[78,80,88,94,97,92,76,74,79,85,95,98,93,77,75,80,84,94,97,91,74,73,81,86,93,96,90,79,82,90];
+const o25=[74,75,83,90,93,88,70,69,74,80,90,94,88,72,71,75,79,89,92,86,70,68,76,81,88,91,85,74,77,85];
+new Chart($("#occChart"),{type:"line",data:{labels:days,datasets:[
+{label:"2026",data:o26,borderColor:brand,backgroundColor:brand+"22",fill:true,tension:.3,pointRadius:0,borderWidth:2},
+{label:"2025",data:o25,borderColor:ink,borderDash:[4,4],pointRadius:0,borderWidth:1.5,tension:.3}
+]},options:{maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{title:c=>c[0].label+" set",label:c=>c.dataset.label+": "+c.parsed.y+"%"}}},
+scales:{y:{min:50,max:100,ticks:{callback:v=>v+"%"},grid:{color:line}},x:{grid:{display:false},ticks:{maxTicksLimit:10}}}}});
+new Chart($("#chanChart"),{type:"bar",data:{labels:["Booking.com","Airbnb","Website","Google Travel","Outros"],datasets:[{data:[31200,12800,9600,4100,3500],backgroundColor:[brand,green,warn,brand+"99",ink+"88"],borderRadius:4}]},
+options:{indexAxis:"y",maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>c.parsed.x.toLocaleString("pt-PT")+" €"}}},
+scales:{x:{grid:{color:line},ticks:{callback:v=>(v/1000)+" k€"}},y:{grid:{display:false}}}}});
+}
+if(window.Chart) charts(); else window.addEventListener("load",charts);
+const M=[
+[1,"Servidor e hardware de apoio","Reforço de processamento e armazenamento local/híbrido com monitorização","M1–M3"],
+[1,"Web check-in e validação documental (SaaS)","Plataforma de check-in online com OCR, ligada ao PMS pelo hub","M1–M2"],
+[1,"Verificação biométrica facial","Selfie com prova de vida e correspondência 1:1 com o documento","M2"],
+[1,"Automação de fluxos de registo 24/7","Link de pré-chegada, ficha automática e integração bidirecional com o PMS","M4–M5"],
+[1,"Conformidade normativa e RGPD","Comunicação automática ao SIBA, encriptação, consentimento e retenção mínima","M1–M9"],
+[1,"Licenciamento Microsoft Server e acessos","Licenças de servidor, contas individuais, MFA e terminais centralizados","M1–M3"],
+[1,"Backup e armazenamento seguro","Backup encriptado local e fora do local, com testes de reposição","M1–M3"],
+[1,"Bases de dados SQL Server","Repositório único e ETL entre PMS, ERP, POS e IA","M2–M3"],
+[2,"Modelos de IA e assistentes de trabalho","Assistentes de IA em ambiente Microsoft seguro para relatórios, documentos e respostas","M6–M8"],
+[2,"Automação de processos (RPA/IA)","Leitura, classificação e encaminhamento de emails e verificação documental 24/7","M4–M6"],
+[2,"Business Intelligence Microsoft","Power BI com ocupação, receita, desempenho comercial e housekeeping","M3–M9"],
+[2,"Integração de canais e gestão hoteleira","Hub ITGEST entre Booking, Airbnb, Google Travel, website e o PMS atual","M3–M4"],
+[2,"RMS para preços dinâmicos","Ligação a um RMS, com aprovação e publicação de preços pelo hub","M6–M8"],
+[3,"Gestão documental inteligente","SharePoint e OneDrive estruturados, com permissões avançadas e fluxos de IA","M4–M6"],
+[3,"Fluxos de trabalho colaborativo","Microsoft 365 com IA para comunicação interna e dados sensíveis","M5–M7"],
+[4,"Agentes de IA e chatbots","Assistente multicanal (website e WhatsApp) com contexto da reserva","M3–M9"],
+[4,"Integração de sistemas","Arquitetura do hub e interoperabilidade entre PMS, ERP, canais e documentos","M1–M9"],
+[4,"Capacitação e formação","Dois módulos de formação com acompanhamento prático","M6 · M9"],
+[4,"Auditoria de conformidade RGPD","Auditoria inicial e final, incluindo AI Act e documentação","M3 · M9"]
+];
+function renderMatrix(f){
+$("#matrix").innerHTML=M.filter(r=>f==="all"||String(r[0])===f).map(r=>`<tr><td>${r[1]}</td><td>${r[2]}</td><td><span class="tag">Eixo ${r[0]}</span></td><td class="mono" style="white-space:nowrap">${r[3]}</td><td class="ok-mark">✓</td></tr>`).join("");
+}
+$$("#filters button").forEach(b=>b.addEventListener("click",()=>{
+$$("#filters button").forEach(x=>x.setAttribute("aria-pressed",x===b?"true":"false"));
+renderMatrix(b.dataset.f);
+}));
+renderMatrix("all");
+const months=[["M1","out 26"],["M2","nov"],["M3","dez"],["M4","jan 27"],["M5","fev"],["M6","mar"],["M7","abr"],["M8","mai"],["M9","jun"]];
+const G=[
+["Equipa de Desenvolvimento"],
+["Web check-in: OCR e biometria",1,2,"dev"],
+["Integração PMS e canais",3,4,"dev"],
+["Automação de fluxos com IA",4,5,"dev"],
+["Equipa de AI"],
+["OCR e biometria para o check-in",2,2,"ai"],
+["Arquitetura de chatbots e RPA",2,3,"ai"],
+["Chatbots multicanal",3,5,"ai"],
+["RPA/IA: emails e automação",4,6,"ai"],
+["Assistentes de IA para produtividade",6,8,"ai"],
+["Otimização de chatbots e RPA",7,9,"ai"],
+["Equipa de BI"],
+["Configuração do ETL de dados",2,3,"bi"],
+["Power BI e dashboards iniciais",3,5,"bi"],
+["ETL para RMS e KPIs",4,6,"bi"],
+["Dashboards de ocupação e receitas",6,8,"bi"],
+["RMS e preços dinâmicos",6,8,"bi"],
+["KPIs e dashboards personalizados",7,9,"bi"],
+["Equipa Microsoft"],
+["SharePoint e OneDrive",4,5,"ms"],
+["Permissões avançadas e fluxos de IA",5,6,"ms"],
+["Integração com PMS, email e sistemas",6,7,"ms"],
+["Transversal"],
+["Auditoria RGPD inicial",3,3,"tr"],
+["Formação: módulo 1",6,6,"tr"],
+["Formação: módulo 2",9,9,"tr"],
+["Auditoria final: RGPD, AI Act, documentação",9,9,"tr"],
+["gates"]
+];
+(function renderGantt(){
+const g=$("#gantt"); let html=`<div class="gh lab" style="text-align:left">Atividade</div>`+months.map(m=>`<div class="gh"><b>${m[0]}</b>${m[1]}</div>`).join("");
+let row=2;
+G.forEach(r=>{
+if(r[0]==="gates"){
+html+=`<div class="lab" style="font-weight:600;grid-row:${row}">Gate reviews</div>`+months.map((_,i)=>`<div class="gate" style="grid-row:${row};grid-column:${i+2}">${[3,6,9].includes(i+1)?"◆ G"+((i+1)/3):""}</div>`).join("");
+} else if(r.length===1){
+html+=`<div class="team-row" style="grid-row:${row}">${r[0]}</div>`;
+} else {
+html+=`<div class="lab" style="grid-row:${row};grid-column:1">${r[0]}</div>`;
+for(let c=1;c<=9;c++) html+=`<div style="grid-row:${row};grid-column:${c+1}"></div>`;
+html+=`<div class="bar ${r[3]}" style="grid-row:${row};grid-column:${r[1]+1} / ${r[2]+2};border-bottom:0;padding:0" title="M${r[1]}–M${r[2]}"></div>`;
+}
+row++;
+});
+g.innerHTML=html;
+})();
+const R=[
+["Sistemas atuais",[
+["pms","Que PMS usam hoje? Tem API ou integração disponível?","Define como o hub se liga ao PMS",true],
+["cm","Usam channel manager? Qual?","Pode ser o conector aos canais",true],
+["erp","Que ERP/faturação e POS usam?","Faturas, bar e pagamentos",false],
+["m365","Já têm Microsoft 365? Que licenças e quantos utilizadores?","Base do SharePoint, Power BI e assistentes",false]
+]],
+["O hostel",[
+["camas","Número de camas, quartos privados e dormitórios","Dimensiona dashboards e housekeeping",false],
+["equipa","Dimensão da equipa e horário da receção","Utilizadores, formação e cobertura 24/7",false],
+["canais","Peso de cada canal nas reservas (Booking, Airbnb, website, outros)","Prioridade das integrações",true],
+["linguas","Principais nacionalidades e línguas dos hóspedes","Línguas do assistente e do check-in",false]
+]],
+["Processos",[
+["checkin","Como é feito hoje o check-in e a comunicação ao SIBA?","Ponto de partida da automação",true],
+["emails","Volume diário de emails e mensagens e tipos mais comuns","Treino da triagem e do assistente",false],
+["precos","Quem define os preços hoje e com que frequência?","Regras de aprovação do RMS",false],
+["acesso","Como é o acesso aos quartos (chave, cartão, código)?","Envio de acessos após o check-in",false]
+]],
+["Objetivos e condições",[
+["kpis","Que indicadores a gerência quer ver todas as semanas?","Desenho dos dashboards",false],
+["dores","As 3 tarefas que mais tempo consomem à equipa","Prioridades de automação",true],
+["financ","Estado da candidatura “IA nas PMEs” e rubricas elegíveis","Estrutura final do orçamento",true],
+["dados","Onde estão hoje os dados de hóspedes e backups?","Plano de migração e RGPD",false]
+]]
+];
+const KEY="ghh-req-notes";
+let notes={}; try{notes=JSON.parse(localStorage.getItem(KEY)||"{}")}catch(e){notes={}}
+$("#reqs").innerHTML=R.map(g=>`<div class="rg"><h3>${g[0]}</h3>${g[1].map(q=>`<div class="q${q[3]?" crit":""}"><label for="q-${q[0]}">${q[1]}<span class="why">${q[2]}</span></label><textarea id="q-${q[0]}" rows="1" placeholder="Notas…"></textarea></div>`).join("")}</div>`).join("");
+const all=R.flatMap(g=>g[1]);
+function prog(){
+const n=all.filter(q=>($("#q-"+q[0]).value||"").trim()).length;
+$("#prog").style.width=(n/all.length*100)+"%";
+$("#progTxt").textContent=`${n} de ${all.length} respondidas`;
+}
+all.forEach(q=>{
+const t=$("#q-"+q[0]); t.value=notes[q[0]]||"";
+t.addEventListener("input",()=>{notes[q[0]]=t.value; try{localStorage.setItem(KEY,JSON.stringify(notes))}catch(e){} prog();});
+});
+prog();
+function toast(m){$("#toast").textContent=m; setTimeout(()=>{$("#toast").textContent=""},3000)}
+$("#copyBtn").addEventListener("click",()=>{
+const txt="Levantamento de requisitos · Green Heart Hostel\n\n"+R.map(g=>g[0].toUpperCase()+"\n"+g[1].map(q=>"- "+q[1]+"\n  "+(($("#q-"+q[0]).value||"").trim()||"(sem resposta)")).join("\n")).join("\n\n");
+const fb=$("#copyFallback");
+if(navigator.clipboard && navigator.clipboard.writeText){
+navigator.clipboard.writeText(txt).then(()=>toast("Notas copiadas.")).catch(()=>{fb.hidden=false;fb.value=txt;fb.select();toast("Selecione o texto abaixo e copie.")});
+} else {fb.hidden=false;fb.value=txt;fb.select();toast("Selecione o texto abaixo e copie.")}
+});
+let armed=false;
+$("#clearBtn").addEventListener("click",()=>{
+if(!armed){armed=true;$("#clearBtn").textContent="Confirmar limpeza";setTimeout(()=>{armed=false;$("#clearBtn").textContent="Limpar"},3000);return}
+armed=false;$("#clearBtn").textContent="Limpar";
+notes={}; try{localStorage.removeItem(KEY)}catch(e){}
+all.forEach(q=>{$("#q-"+q[0]).value=""}); prog(); toast("Notas apagadas.");
+});
+const secIds=$$("#nav a").map(a=>a.getAttribute("href").slice(1));
+const obs=new IntersectionObserver(es=>{
+es.forEach(e=>{ if(e.isIntersecting){ $$("#nav a").forEach(a=>a.classList.toggle("on",a.getAttribute("href")==="#"+e.target.id)); } });
+},{rootMargin:"-45% 0px -50% 0px"});
+secIds.forEach(id=>{const el=document.getElementById(id); if(el) obs.observe(el)});
+let pres=false;
+function currentIdx(){
+let best=0; secIds.forEach((id,i)=>{const r=document.getElementById(id).getBoundingClientRect(); if(r.top<window.innerHeight*0.4) best=i}); return best;
+}
+function go(d){
+const i=Math.max(0,Math.min(secIds.length-1,currentIdx()+d));
+document.getElementById(secIds[i]).scrollIntoView({behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth"});
+}
+function setPres(on){pres=on;document.body.classList.toggle("pres",on);$("#presHint").hidden=!on;$("#presentBtn").textContent=on?"Sair da apresentação":"Modo apresentação";
+if(on){try{document.documentElement.requestFullscreen&&document.documentElement.requestFullscreen().catch(()=>{})}catch(e){}}
+else{try{document.fullscreenElement&&document.exitFullscreen()}catch(e){}}}
+$("#presentBtn").addEventListener("click",()=>setPres(!pres));
+document.addEventListener("keydown",e=>{
+if(e.target.tagName==="TEXTAREA") return;
+if(!pres) return;
+if(e.key==="ArrowRight"||e.key==="PageDown"){e.preventDefault();go(1)}
+else if(e.key==="ArrowLeft"||e.key==="PageUp"){e.preventDefault();go(-1)}
+else if(e.key==="Escape"){setPres(false)}
+});
+})();
+</script>
+</body></html>
+
